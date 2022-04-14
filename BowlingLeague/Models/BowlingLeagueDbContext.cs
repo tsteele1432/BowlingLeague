@@ -14,5 +14,7 @@ namespace BowlingLeague.Models
         }
 
         public DbSet<Bowler> Bowlers { get; set; }
+
+        public DbSet<Team> Teams { get; set; }
     }
 }

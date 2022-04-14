@@ -2,7 +2,44 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@model List<Bowler>
+
+<h1 class="display-4">@ViewBag.TeamName</h1>
+
+<a class="btn btn-success" role="button" asp-action="CreateEditBowler">Add</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Middle</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col">Zip</th>
+            <th scope="col">Number</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bowler in Model)
+        {
+            <tr>
+                <th scope="row">@bowler.BowlerID</th>
+                <td>@bowler.BowlerFirstName</td>
+                <td>@bowler.BowlerLastName</td>
+                <td>@bowler.BowlerMiddleInitial</td>
+                <td>@bowler.BowlerAddress</td>
+                <td>@bowler.BowlerCity</td>
+                <td>@bowler.BowlerState</td>
+                <td>@bowler.BowlerZip</td>
+                <td>@bowler.BowlerPhoneNumber</td>
+                <td><a class="btn btn-outline-info btn-sm" role="button" asp-action="Edit" asp-route-bowlerId="@bowler.BowlerID">Edit</a></td>
+                <td><a class="btn btn-outline-danger btn-sm" role="button" asp-action="Delete" asp-route-bowlerId="@bowler.BowlerID">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

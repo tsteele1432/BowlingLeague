@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Create/Edit Bowler";
+}
+
+@model BowlingLeague.Models.Bowler
+
+<h1 class="display-4">Create/Edit Bowler</h1>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+
+    <div class="form-group">
+        <label asp-for="BowlerFirstName">First Name</label>
+        <input type="text" class="form-control" asp-for="BowlerFirstName">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerLastName">Last Name</label>
+        <input type="text" class="form-control" asp-for="BowlerLastName">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerMiddleInitial">Middle Initial</label>
+        <input type="text" class="form-control" asp-for="BowlerMiddleInitial">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerAddress">Address</label>
+        <input type="text" class="form-control" asp-for="BowlerAddress">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerCity">City</label>
+        <input type="text" class="form-control" asp-for="BowlerCity">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerState">State</label>
+        <input type="text" class="form-control" asp-for="BowlerState">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerZip">Zip</label>
+        <input type="text" class="form-control" asp-for="BowlerZip">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="BowlerPhoneNumber">Phone Number</label>
+        <input type="text" class="form-control" asp-for="BowlerPhoneNumber">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="TeamID">Team</label>
+        <select asp-for="TeamID" class="form-control">
+            @foreach (Team team in ViewBag.Teams)
+            {
+                <option value="@team.TeamID">@team.TeamName</option>
+            }
+        </select>
+    </div>
+
+    @if (ViewBag.Added == false)
+    {
+        <input type="hidden" asp-for="BowlerID" />
+    }
+
+    <a class="btn btn-secondary" role="button" asp-action="Index">Cancel</a>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
